@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:otappfluttertemplate/utils/routers.dart';
+import 'package:otappfluttertemplate/routing/router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const padding = 25.0;
-const elevation = 7.0;
-const paycardwidth = 80.0;
-const detailsfontsize = 16.0;
+/// A container for app wide constants
+///
+/// It provices a centralized location for constant values, making it easier to
+/// manage and maintain them throughout the app.
+abstract class AppConstants {
+  // e.g. fare
+  static const String minimumFareAmount = '0';
+  static const String maximumFareAmount = '10000000';
+}
 
+@Deprecated('Moved the constants/dimensions to a [dimens.dart] file')
+const padding = 25.0;
+@Deprecated('Moved the constants/dimensions to a [dimens.dart] file')
+const elevation = 7.0;
+@Deprecated('Moved the constants/dimensions to a [dimens.dart] file')
+const paycardwidth = 80.0;
+
+@Deprecated('Moved the [formatPhoneNumber] to a [phone_number_utils.dart] file')
 String formatPhoneNumber(String phoneNumber, String countryCode) {
   if (phoneNumber.startsWith('0') || phoneNumber.startsWith('1')) {
     return countryCode + phoneNumber.substring(1);
@@ -15,18 +28,12 @@ String formatPhoneNumber(String phoneNumber, String countryCode) {
   return countryCode + phoneNumber;
 }
 
+@Deprecated('Moved the [isValidEmail] to a [email_utils.dart] file')
 bool isValidEmail(String email) {
   return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
 }
 
-class HeroTags {
-  static const String carousel = "carousel";
-  static const String grid = "grid";
-
-  static String getCarouselTag(String movieId) => "${carousel}_$movieId";
-  static String getGridTag(String movieId) => "${grid}_$movieId";
-}
-
+@Deprecated('Moved the [showComingSoonDialog] to a [components/dialog] file')
 void showComingSoonDialog(BuildContext context, String platform) {
   showDialog(
     context: context,
@@ -47,6 +54,7 @@ void showComingSoonDialog(BuildContext context, String platform) {
   );
 }
 
+@Deprecated('Moved the [showSnackbar] to a components/snackbars file')
 void showSnackbar(String? msg) {
   //show error in snackbar
   ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
@@ -59,14 +67,14 @@ void showSnackbar(String? msg) {
   );
 }
 
-
-
+@Deprecated('Moved the [launchURL] to a [url_utils] file')
 Future<void> launchURL(String url) async {
   if (!await launchUrl(Uri.parse(url))) {
     throw 'Could not launch $url';
   }
 }
 
+@Deprecated('Moved the [getFormattedDate] to a [date_utils] file')
 String getFormattedDate(DateTime parsedDate) {
   try {
     // Formatting the date as "dd MMM yyyy"
