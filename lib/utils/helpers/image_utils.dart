@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-import '../views/shared/customimagewidget.dart';
+import '../../views/shared/custom_image_widget.dart';
 
 class ImageUtils {
   /// Creates an appropriate image widget based on the image path

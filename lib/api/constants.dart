@@ -1,4 +1,4 @@
-class ApiConstants {
+abstract class ApiConstants {
   // Endpoints prefix repeated in each request
   static const String apiversionPrefix = '/api/v1/agent';
 
